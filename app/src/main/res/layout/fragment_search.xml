@@ -5,36 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.SearchFragment">
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:text="Welcome!" />
-
-        <EditText
+        android:layout_gravity="center_vertical">
+        <SearchView
             android:id="@+id/search_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search Keyword"
-            android:paddingTop="20dp" />
+            android:queryHint="Search text"
+            android:background="#efefef"
+            android:layout_gravity="center"/>
 
         <Button
+            android:layout_below="@+id/search_key"
+            android:layout_marginTop="30dp"
             android:id="@+id/submit_btn"
             android:layout_width="100dp"
             android:layout_height="35dp"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:background="@color/colorPrimary"
             android:text="Search"
             android:textAlignment="center" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

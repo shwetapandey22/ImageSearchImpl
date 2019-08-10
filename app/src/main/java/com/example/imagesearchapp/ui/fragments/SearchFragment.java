@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,7 @@ import com.example.imagesearchapp.R;
 import com.example.imagesearchapp.ui.MainActivity;
 
 public class SearchFragment extends Fragment {
-	private static  String TITLE = "Image Search";
+	private static  String TITLE = "Picture Viewer";
 
     public static SearchFragment newInstance()
     {
@@ -45,16 +46,32 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final EditText searchKey = view.findViewById(R.id.search_key);
+        final SearchView searchView = view.findViewById(R.id.search_key);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // This will be fired every time you input any character.
+                return false;
+            }
+        });
         Button submitBtn = view.findViewById(R.id.submit_btn);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Editable searchKeyWord = searchKey.getText();
-                if (!TextUtils.isEmpty(searchKeyWord)) {
-                    ((MainActivity)getActivity()).fetchRepositories(searchKeyWord.toString());
-                }
+               search(String.valueOf(searchView.getQuery()));
             }
         });
+    }
+
+    public void search(String searchKeyWord){
+        if (!TextUtils.isEmpty(searchKeyWord)) {
+            ((MainActivity)getActivity()).fetchRepositories(searchKeyWord);
+        }
     }
 }

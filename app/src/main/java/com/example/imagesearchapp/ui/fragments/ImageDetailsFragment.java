@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,11 +22,12 @@ import androidx.fragment.app.Fragment;
 import com.example.imagesearchapp.R;
 import com.example.imagesearchapp.model.Hit;
 import com.example.imagesearchapp.ui.MainActivity;
+import com.squareup.picasso.Picasso;
 
 
 public class ImageDetailsFragment extends Fragment {
     private static String IMAGE_OBJECT = "imageDetails";
-    private static  String TITLE = "Image Details";
+    private static  String TITLE = "Details";
 
     public static ImageDetailsFragment newInstance(Hit item)
     {
@@ -54,12 +56,14 @@ public class ImageDetailsFragment extends Fragment {
         TextView comments = view.findViewById(R.id.comments);
         TextView favorites = view.findViewById(R.id.favorites);
         TextView downloads = view.findViewById(R.id.downloads);
+        ImageView imageView = view.findViewById(R.id.image_view);
 
         imageOwner.setText(getResources().getString(R.string.username,imageObj.getUser()));
         likes.setText(getResources().getString(R.string.likes, String.valueOf(imageObj.getLikes())));
         favorites.setText(getResources().getString(R.string.favorites, String.valueOf(imageObj.getFavorites())));
         downloads.setText(getResources().getString(R.string.downloads, String.valueOf(imageObj.getDownloads())));
         comments.setText(getResources().getString(R.string.comments, String.valueOf(imageObj.getComments())));
+        Picasso.with(getContext()).load(imageObj.getWebformatURL()).into(imageView);
 
     }
 }

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +35,7 @@ public class SearchResultFragment extends Fragment {
     private SearchResultAdapter searchResultAdapter;
     private RecyclerView recyclerView;
     private static final String SEARCH_RESULTS = "results";
-    private static final String TITLE = "Images Search Results";
+    private static final String TITLE = "Search Results";
 
 
     public static SearchResultFragment newInstance(List<Hit> itemList){
@@ -73,7 +74,7 @@ public class SearchResultFragment extends Fragment {
                 ((MainActivity)getActivity()).displayImageDetails(item);
             }
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(searchResultAdapter);
         searchResultAdapter.notifyDataSetChanged();
     }
