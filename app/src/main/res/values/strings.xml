@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ImageSearchApp</string>
+    <string name="username">Username: %1s</string>
+    <string name="likes">Likes: %1s</string>
+    <string name="favorites">Favorites: %1s</string>
+    <string name="downloads">Downloads: %1s</string>
+    <string name="comments">Comments: %1s</string>
 </resources>
