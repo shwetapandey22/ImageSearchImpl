@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.SearchFragment">
+
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -12,6 +13,8 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_gravity="center_vertical">
+
+
         <SearchView
             android:id="@+id/search_key"
             android:layout_width="match_parent"
@@ -20,16 +23,28 @@
             android:background="#efefef"
             android:layout_gravity="center"/>
 
-        <Button
-            android:layout_below="@+id/search_key"
-            android:layout_marginTop="30dp"
-            android:id="@+id/submit_btn"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:layout_centerInParent="true"
-            android:background="@color/colorPrimary"
-            android:text="Search"
-            android:textAlignment="center" />
+       <FrameLayout android:layout_below="@+id/search_key"
+           android:layout_marginTop="30dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="15dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal|bottom"/>
+           <Button
+                android:id="@+id/submit_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/colorPrimary"
+                android:text="Search"
+                android:layout_gravity="center_horizontal|bottom"
+                android:textAlignment="center" />
+            </FrameLayout>
     </RelativeLayout>
 
 </FrameLayout>
